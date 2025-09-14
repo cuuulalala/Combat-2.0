@@ -1,7 +1,5 @@
 using UnityEngine;
- codex/implement-player-movement-and-shooting-mechanics-c0ewn5
-using UnityEngine.InputSystem;
-> main
+
 
 public class Weapon : MonoBehaviour
 {
@@ -14,15 +12,12 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
- codex/implement-player-movement-and-shooting-mechanics-c0ewn5
-        if (Mouse.current != null && Mouse.current.leftButton.isPressed && Time.time >= nextFireTime)
 
-        if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
-main
         {
             Shoot();
             nextFireTime = Time.time + fireRate;
         }
+
     }
 
     void Shoot()

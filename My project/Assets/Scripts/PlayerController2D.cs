@@ -1,7 +1,5 @@
 using UnityEngine;
- codex/implement-player-movement-and-shooting-mechanics-c0ewn5
-using UnityEngine.InputSystem;
-> main
+
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController2D : MonoBehaviour
@@ -20,7 +18,7 @@ public class PlayerController2D : MonoBehaviour
 
     void Update()
     {
- codex/implement-player-movement-and-shooting-mechanics-c0ewn5
+
         if (Keyboard.current != null)
         {
             movement = Vector2.zero;
@@ -33,14 +31,6 @@ public class PlayerController2D : MonoBehaviour
 
         if (cam != null && Mouse.current != null)
             mousePos = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        movement = movement.normalized;
-
-        if (cam != null)
-            mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
- main
     }
 
     void FixedUpdate()

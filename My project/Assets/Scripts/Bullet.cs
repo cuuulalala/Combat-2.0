@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
     public float damage = 10f;
     public float lifeTime = 5f;
 
-codex/implement-player-movement-and-shooting-mechanics-c0ewn5
+ main
     void Awake()
     {
         var sr = GetComponent<SpriteRenderer>();
@@ -24,8 +24,7 @@ codex/implement-player-movement-and-shooting-mechanics-c0ewn5
         col.isTrigger = true;
     }
 
-=======
-main
+
     void Start()
     {
         Destroy(gameObject, lifeTime);
@@ -45,7 +44,7 @@ main
         }
         Destroy(gameObject);
     }
- codex/implement-player-movement-and-shooting-mechanics-c0ewn5
+
 
     Sprite CreateSprite()
     {
@@ -55,5 +54,4 @@ main
         tex.Apply();
         return Sprite.Create(tex, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
     }
- main
-}
+
