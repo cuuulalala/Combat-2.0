@@ -11,6 +11,7 @@ public static class PlayerBootstrap
             player = new GameObject("Player");
             player.transform.position = Vector3.zero;
         }
+        player.tag = "Player";
 
         var rb = player.GetComponent<Rigidbody2D>();
         if (rb == null)
@@ -24,9 +25,13 @@ public static class PlayerBootstrap
         if (sr == null)
             sr = player.AddComponent<SpriteRenderer>();
         sr.sprite = CreateCircleSprite();
+        sr.color = Color.yellow;
+        var shader = Shader.Find("Universal Render Pipeline/2D/Sprite-Unlit-Default");
+        if (shader != null)
+            sr.material = new Material(shader);
 
-        if (player.GetComponent<PlayerMovement>() == null)
-            player.AddComponent<PlayerMovement>();
+        if (player.GetComponent<PlayerController2D>() == null)
+            player.AddComponent<PlayerController2D>();
     }
 
     static Sprite CreateCircleSprite()

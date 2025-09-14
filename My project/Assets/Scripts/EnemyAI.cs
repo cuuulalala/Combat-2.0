@@ -11,6 +11,16 @@ public class EnemyAI : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+ codex/implement-player-movement-and-shooting-mechanics-c0ewn5
+        var sr = GetComponent<SpriteRenderer>();
+        if (sr == null)
+            sr = gameObject.AddComponent<SpriteRenderer>();
+        sr.sprite = CreateCircleSprite();
+        sr.color = Color.red;
+        var shader = Shader.Find("Universal Render Pipeline/2D/Sprite-Unlit-Default");
+        if (shader != null)
+            sr.material = new Material(shader);
+>> main
     }
 
     void Start()
@@ -37,4 +47,29 @@ public class EnemyAI : MonoBehaviour
             health.TakeDamage(contactDamage);
         }
     }
+ codex/implement-player-movement-and-shooting-mechanics-c0ewn5
+
+    Sprite CreateCircleSprite()
+    {
+        const int size = 32;
+        var tex = new Texture2D(size, size);
+        var center = size / 2f;
+        for (int x = 0; x < size; x++)
+        {
+            for (int y = 0; y < size; y++)
+            {
+                float dx = x - center + 0.5f;
+                float dy = y - center + 0.5f;
+                if (dx * dx + dy * dy <= center * center)
+                    tex.SetPixel(x, y, Color.white);
+                else
+                    tex.SetPixel(x, y, Color.clear);
+            }
+        }
+        tex.filterMode = FilterMode.Point;
+        tex.Apply();
+        return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
+    }
+=======
+ main
 }
