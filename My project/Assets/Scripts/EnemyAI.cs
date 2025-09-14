@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
         var sr = GetComponent<SpriteRenderer>();
         if (sr == null)
             sr = gameObject.AddComponent<SpriteRenderer>();
@@ -19,6 +20,7 @@ public class EnemyAI : MonoBehaviour
         var shader = Shader.Find("Universal Render Pipeline/2D/Sprite-Unlit-Default");
         if (shader != null)
             sr.material = new Material(shader);
+
     }
 
     void Start()
@@ -67,4 +69,5 @@ public class EnemyAI : MonoBehaviour
         tex.Apply();
         return Sprite.Create(tex, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f), size);
     }
+
 }

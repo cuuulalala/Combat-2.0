@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
     public float damage = 10f;
     public float lifeTime = 5f;
 
+ main
     void Awake()
     {
         var sr = GetComponent<SpriteRenderer>();
@@ -22,6 +23,7 @@ public class Bullet : MonoBehaviour
             col = gameObject.AddComponent<CircleCollider2D>();
         col.isTrigger = true;
     }
+
 
     void Start()
     {
@@ -43,6 +45,7 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+
     Sprite CreateSprite()
     {
         var tex = new Texture2D(1, 1);
@@ -51,4 +54,4 @@ public class Bullet : MonoBehaviour
         tex.Apply();
         return Sprite.Create(tex, new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f), 1f);
     }
-}
+

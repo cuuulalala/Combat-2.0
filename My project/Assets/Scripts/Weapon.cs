@@ -1,7 +1,5 @@
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM
-using UnityEngine.InputSystem;
-#endif
+
 
 public class Weapon : MonoBehaviour
 {
@@ -14,19 +12,12 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-#if ENABLE_INPUT_SYSTEM
-        if (Mouse.current != null && Mouse.current.leftButton.isPressed && Time.time >= nextFireTime)
+
         {
             Shoot();
             nextFireTime = Time.time + fireRate;
         }
-#else
-        if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
-        {
-            Shoot();
-            nextFireTime = Time.time + fireRate;
-        }
-#endif
+
     }
 
     void Shoot()

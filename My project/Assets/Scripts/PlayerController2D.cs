@@ -1,7 +1,5 @@
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM
-using UnityEngine.InputSystem;
-#endif
+
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController2D : MonoBehaviour
@@ -20,7 +18,7 @@ public class PlayerController2D : MonoBehaviour
 
     void Update()
     {
-#if ENABLE_INPUT_SYSTEM
+
         if (Keyboard.current != null)
         {
             movement = Vector2.zero;
@@ -33,13 +31,6 @@ public class PlayerController2D : MonoBehaviour
 
         if (cam != null && Mouse.current != null)
             mousePos = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-#else
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        movement = movement.normalized;
-        if (cam != null)
-            mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-#endif
     }
 
     void FixedUpdate()
